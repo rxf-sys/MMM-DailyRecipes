@@ -1,0 +1,239 @@
+/* KI-gesteuerte Konfiguration für MMM-DailyRecipes
+ * Kopiere diese Datei und passe die Einstellungen an
+ */
+
+// === GRUNDKONFIGURATION ===
+{
+    module: 'MMM-DailyRecipes',
+    position: 'bottom_left',
+    config: {
+        language: 'de',
+        
+        // === KI-EINSTELLUNGEN ===
+        aiProvider: 'openai', // 'openai', 'anthropic', 'ollama' (lokal)
+        apiKey: 'sk-your-openai-api-key-here', // Dein API-Schlüssel
+        
+        // KI-Verhalten
+        creativityLevel: 0.7, // 0.0 = konservativ, 1.0 = sehr kreativ
+        autoLearnPreferences: true, // Lernt aus deinen Bewertungen
+        
+        // === NUTZER-PROFIL (wird automatisch gelernt und angepasst) ===
+        userProfile: {
+            // Anfangswerte - die KI lernt dazu!
+            householdSize: 2,
+            cookingSkillLevel: 'medium', // 'beginner', 'medium', 'advanced'
+            availableTime: 30, // Durchschnittliche Kochzeit in Minuten
+            preferredMealTimes: ['dinner'], // ['breakfast', 'lunch', 'dinner']
+            
+            // Diese werden automatisch erkannt und gelernt:
+            dietaryRestrictions: [], // z.B. ['vegetarian', 'gluten-free']
+            cuisinePreferences: [], // z.B. ['italian', 'asian', 'mediterranean']
+            healthGoals: [] // z.B. ['weight_loss', 'muscle_gain', 'heart_healthy']
+        },
+        
+        // === AUTOMATISCHE ANPASSUNGEN ===
+        adaptToSeason: true, // Berücksichtigt automatisch die Jahreszeit
+        adaptToWeather: true, // Passt sich dem Wetter an
+        adaptToWeekday: true, // Sonntag = aufwendiger, Montag = schnell
+        considerLeftovers: true, // Plant Reste mit ein
+        sustainabilityFocus: true, // Bevorzugt nachhaltige Zutaten
+        
+        // === BUDGET & NACHHALTIGKEIT ===
+        budgetConsciousness: 'medium', // 'low', 'medium', 'high'
+        
+        // === FEATURES ===
+        includeNutritionFacts: true, // Zeigt Nährwerte an
+        generateShoppingList: true, // Erstellt Einkaufsliste
+        generateCookingTips: true, // KI gibt Kochtipps
+        showImage: true, // Generiert/zeigt Rezeptbilder
+        showQR: false, // QR-Code für Einkaufsliste
+        
+        // === TECHNISCHE EINSTELLUNGEN ===
+        updateInterval: 24 * 60 * 60 * 1000, // Täglich neue Rezepte
+        cacheRecipes: true, // Speichert Rezepte lokal
+        maxCachedRecipes: 50,
+        
+        // === REGION & ZEIT ===
+        region: 'DE', // 'DE', 'AT', 'CH' für Saisonalität
+        timezone: 'Europe/Berlin'
+    }
+},
+
+// === ERWEITERTE KONFIGURATIONEN ===
+
+// Für OpenAI (empfohlen für beste Qualität)
+{
+    module: 'MMM-DailyRecipes',
+    position: 'middle_center',
+    config: {
+        language: 'de',
+        
+        // OpenAI-Konfiguration
+        aiProvider: 'openai',
+        apiKey: 'sk-proj-your-key-here', // Von https://platform.openai.com/
+        
+        userProfile: {
+            householdSize: 4,
+            cookingSkillLevel: 'beginner',
+            availableTime: 20, // Nur 20 Minuten Zeit
+            dietaryRestrictions: ['vegetarian'], // Familie ist vegetarisch
+        },
+        
+        creativityLevel: 0.5, // Konservativere Rezepte für Anfänger
+        budgetConsciousness: 'high', // Günstiges Kochen
+        
+        // Jeden Tag um 7 Uhr neues Rezept
+        updateInterval: 24 * 60 * 60 * 1000
+    }
+},
+
+// Für Anthropic Claude (sehr gut für komplexe Ernährungsbedürfnisse)
+{
+    module: 'MMM-DailyRecipes', 
+    position: 'top_right',
+    config: {
+        language: 'de',
+        
+        // Claude-Konfiguration
+        aiProvider: 'anthropic',
+        apiKey: 'sk-ant-your-key-here', // Von https://console.anthropic.com/
+        
+        userProfile: {
+            householdSize: 1,
+            cookingSkillLevel: 'advanced',
+            availableTime: 60,
+            dietaryRestrictions: ['vegan', 'gluten-free', 'nut-free'],
+            healthGoals: ['weight_loss', 'heart_healthy']
+        },
+        
+        creativityLevel: 0.9, // Sehr kreative Rezepte
+        sustainabilityFocus: true,
+        includeNutritionFacts: true
+    }
+},
+
+// Für lokale KI (Ollama - kostenlos, privat)
+{
+    module: 'MMM-DailyRecipes',
+    position: 'bottom_left', 
+    config: {
+        language: 'de',
+        
+        // Lokale KI (erfordert Ollama Installation)
+        aiProvider: 'ollama',
+        apiKey: null, // Nicht benötigt für lokale KI
+        
+        userProfile: {
+            householdSize: 2,
+            cookingSkillLevel: 'medium'
+        },
+        
+        // Lokale KI ist weniger leistungsfähig
+        creativityLevel: 0.6,
+        includeNutritionFacts: false, // Weniger Features
+        generateCookingTips: false
+    }
+},
+
+// Maximale KI-Features (für Power-User)
+{
+    module: 'MMM-DailyRecipes',
+    position: 'fullscreen_above',
+    config: {
+        language: 'de',
+        
+        aiProvider: 'openai',
+        apiKey: 'your-api-key',
+        
+        userProfile: {
+            householdSize: 3,
+            cookingSkillLevel: 'advanced',
+            availableTime: 45,
+            preferredMealTimes: ['breakfast', 'lunch', 'dinner']
+        },
+        
+        // Alle KI-Features aktiviert
+        creativityLevel: 0.8,
+        autoLearnPreferences: true,
+        adaptToSeason: true,
+        adaptToWeather: true,
+        adaptToWeekday: true,
+        considerLeftovers: true,
+        sustainabilityFocus: true,
+        
+        includeNutritionFacts: true,
+        generateShoppingList: true,
+        generateCookingTips: true,
+        showImage: true,
+        showQR: true,
+        
+        // Generiert 7-Tage Essenspläne
+        generatePersonalizedMealPlan: true,
+        
+        updateInterval: 12 * 60 * 60 * 1000 // Alle 12 Stunden
+    }
+}
+
+/* 
+ * === INSTALLATION & SETUP ===
+ * 
+ * 1. API-Schlüssel besorgen:
+ * 
+ *    OpenAI (empfohlen):
+ *    - Gehe zu https://platform.openai.com/
+ *    - Erstelle Account und API-Key
+ *    - Lade 5-10$ Guthaben auf (reicht für Monate)
+ * 
+ *    Anthropic Claude:
+ *    - Gehe zu https://console.anthropic.com/
+ *    - Erstelle Account und API-Key
+ * 
+ *    Ollama (kostenlos, lokal):
+ *    - Installiere Ollama: curl -fsSL https://ollama.ai/install.sh | sh
+ *    - Lade Modell: ollama pull llama2
+ *    - Starte Service: ollama serve
+ * 
+ * 2. Modul installieren:
+ *    cd ~/MagicMirror/modules
+ *    git clone [REPO_URL]
+ *    cd MMM-DailyRecipes
+ *    npm install
+ * 
+ * 3. Konfiguration hinzufügen:
+ *    - Wähle eine der obigen Konfigurationen
+ *    - Füge sie zu deiner config/config.js hinzu
+ *    - Ersetze "your-api-key" mit deinem echten Schlüssel
+ * 
+ * 4. Magic Mirror neu starten:
+ *    pm2 restart MagicMirror
+ * 
+ * === KOSTEN ===
+ * 
+ * OpenAI GPT-4: ~0.03$ pro Rezept (1$ = ~30 Rezepte)
+ * Anthropic Claude: ~0.02$ pro Rezept (1$ = ~50 Rezepte)
+ * Ollama: Kostenlos (aber weniger intelligent)
+ * 
+ * Bei täglicher Nutzung: ~1-2$ pro Monat
+ * 
+ * === DATENSCHUTZ ===
+ * 
+ * - OpenAI/Anthropic: Deine Daten werden an deren Server gesendet
+ * - Ollama: Komplett lokal, keine Daten verlassen dein System
+ * - Nutzerdaten werden nur lokal in user_profile.json gespeichert
+ * 
+ * === TROUBLESHOOTING ===
+ * 
+ * Keine Rezepte generiert:
+ * - Prüfe API-Key in der Konsole: pm2 logs MagicMirror
+ * - Teste API-Key: curl -H "Authorization: Bearer sk-..." https://api.openai.com/v1/models
+ * 
+ * Schlechte Rezepte:
+ * - Senke creativityLevel (0.3-0.5)
+ * - Bewerte Rezepte um der KI zu helfen
+ * - Fülle userProfile detaillierter aus
+ * 
+ * KI lernt nicht:
+ * - Stelle sicher dass autoLearnPreferences: true ist
+ * - Bewerte mehrere Rezepte (❤️👍👎⏭️)
+ * - Prüfe user_profile.json auf Updates
+ */

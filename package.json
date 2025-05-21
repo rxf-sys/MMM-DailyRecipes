@@ -1,0 +1,54 @@
+{
+  "name": "mmm-dailyrecipes",
+  "version": "1.0.0",
+  "description": "Ein Magic Mirror Modul, das täglich neue, saisonale Rezepte anzeigt - angepasst an Benutzervorlieben, Allergien und regionale Saisonalität.",
+  "main": "MMM-DailyRecipes.js",
+  "keywords": [
+    "MagicMirror",
+    "module",
+    "recipes",
+    "cooking",
+    "seasonal", 
+    "food",
+    "kitchen",
+    "daily",
+    "german",
+    "deutsch"
+  ],
+  "author": {
+    "name": "Assistant",
+    "email": "assistant@anthropic.com"
+  },
+  "license": "MIT",
+  "homepage": "https://github.com/DEIN_USERNAME/MMM-DailyRecipes",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/DEIN_USERNAME/MMM-DailyRecipes.git"
+  },
+  "bugs": {
+    "url": "https://github.com/DEIN_USERNAME/MMM-DailyRecipes/issues"
+  },
+  "engines": {
+    "node": ">=14.0.0"
+  },
+  "dependencies": {
+    "moment": "^2.29.4"
+  },
+  "peerDependencies": {
+    "magicmirror": "^2.1.0"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "lint": "eslint *.js",
+    "format": "prettier --write *.js *.json *.css"
+  },
+  "devDependencies": {
+    "eslint": "^8.0.0",
+    "prettier": "^2.8.0"
+  },
+  "magicmirror": {
+    "category": "lifestyle",
+    "moduleName": "MMM-DailyRecipes",
+    "position": ["top_bar", "top_left", "top_center", "top_right", "upper_third", "middle_center", "lower_third", "bottom_left", "bottom_center", "bottom_right", "bottom_bar", "fullscreen_above", "fullscreen_below"]
+  }
+}

@@ -1,0 +1,255 @@
+/* MMM-DailyRecipes.css */
+
+.daily-recipes-wrapper {
+    max-width: 400px;
+    font-family: "Roboto", sans-serif;
+}
+
+.daily-recipes-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 15px;
+    font-weight: bold;
+    font-size: 1.2em;
+    color: #fff;
+    border-bottom: 2px solid rgba(255, 255, 255, 0.3);
+    padding-bottom: 8px;
+}
+
+.daily-recipes-header i {
+    font-size: 1.3em;
+    color: #ff6b6b;
+}
+
+.recipe-container {
+    background: rgba(0, 0, 0, 0.4);
+    border-radius: 12px;
+    overflow: hidden;
+    backdrop-filter: blur(5px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.recipe-image {
+    height: 150px;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    position: relative;
+}
+
+.recipe-image::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 50px;
+    background: linear-gradient(transparent, rgba(0, 0, 0, 0.7));
+}
+
+.recipe-info {
+    padding: 15px;
+}
+
+.recipe-title {
+    font-size: 1.1em;
+    font-weight: bold;
+    color: #fff;
+    margin-bottom: 10px;
+    line-height: 1.3;
+}
+
+.recipe-meta {
+    display: flex;
+    gap: 15px;
+    margin-bottom: 15px;
+    flex-wrap: wrap;
+}
+
+.meta-item {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    font-size: 0.8em;
+    color: rgba(255, 255, 255, 0.8);
+    background: rgba(255, 255, 255, 0.1);
+    padding: 4px 8px;
+    border-radius: 12px;
+}
+
+.meta-item i {
+    font-size: 0.9em;
+}
+
+.meta-item.seasonal {
+    background: rgba(76, 175, 80, 0.3);
+    color: #a5d6a7;
+}
+
+.meta-item.seasonal i {
+    color: #4caf50;
+}
+
+.recipe-ingredients,
+.recipe-instructions {
+    margin-bottom: 15px;
+}
+
+.recipe-ingredients h4,
+.recipe-instructions h4 {
+    font-size: 0.9em;
+    font-weight: bold;
+    color: #fff;
+    margin: 0 0 8px 0;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.recipe-ingredients ul,
+.recipe-instructions ol {
+    margin: 0;
+    padding-left: 18px;
+    color: rgba(255, 255, 255, 0.9);
+}
+
+.recipe-ingredients li,
+.recipe-instructions li {
+    font-size: 0.8em;
+    line-height: 1.4;
+    margin-bottom: 4px;
+}
+
+.recipe-instructions li {
+    margin-bottom: 6px;
+}
+
+.more-steps {
+    font-style: italic;
+    color: rgba(255, 255, 255, 0.6);
+}
+
+.recipe-qr {
+    margin-top: 15px;
+    text-align: center;
+}
+
+.qr-placeholder {
+    display: inline-flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 5px;
+    padding: 10px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 8px;
+    color: rgba(255, 255, 255, 0.7);
+    font-size: 0.8em;
+}
+
+.qr-placeholder i {
+    font-size: 1.5em;
+}
+
+/* Responsive Anpassungen */
+@media (max-width: 600px) {
+    .daily-recipes-wrapper {
+        max-width: 300px;
+    }
+    
+    .recipe-meta {
+        gap: 8px;
+    }
+    
+    .meta-item {
+        font-size: 0.7em;
+        padding: 3px 6px;
+    }
+}
+
+/* Animationen */
+.daily-recipes-wrapper {
+    animation: fadeIn 1s ease-in-out;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.recipe-container {
+    transition: all 0.3s ease;
+}
+
+.recipe-container:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+}
+
+/* Dark Theme Optimierung */
+.module.MMM-DailyRecipes {
+    color: #fff;
+}
+
+/* Saisonale Akzente */
+.daily-recipes-wrapper[data-season="spring"] .daily-recipes-header i {
+    color: #4caf50;
+}
+
+.daily-recipes-wrapper[data-season="summer"] .daily-recipes-header i {
+    color: #ff9800;
+}
+
+.daily-recipes-wrapper[data-season="autumn"] .daily-recipes-header i {
+    color: #ff5722;
+}
+
+.daily-recipes-wrapper[data-season="winter"] .daily-recipes-header i {
+    color: #2196f3;
+}
+
+/* Scrollbare Bereiche für längere Listen */
+.recipe-ingredients,
+.recipe-instructions {
+    max-height: 200px;
+    overflow-y: auto;
+}
+
+.recipe-ingredients::-webkit-scrollbar,
+.recipe-instructions::-webkit-scrollbar {
+    width: 4px;
+}
+
+.recipe-ingredients::-webkit-scrollbar-track,
+.recipe-instructions::-webkit-scrollbar-track {
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 2px;
+}
+
+.recipe-ingredients::-webkit-scrollbar-thumb,
+.recipe-instructions::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.3);
+    border-radius: 2px;
+}
+
+/* Präferenz Tags */
+.preference-tags {
+    display: flex;
+    gap: 5px;
+    margin-bottom: 10px;
+    flex-wrap: wrap;
+}
+
+.preference-tag {
+    background: rgba(76, 175, 80, 0.2);
+    color: #a5d6a7;
+    font-size: 0.7em;
+    padding: 2px 6px;
+    border-radius: 8px;
+    border: 1px solid rgba(76, 175, 80, 0.3);
+}
